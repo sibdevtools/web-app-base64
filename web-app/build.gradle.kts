@@ -73,6 +73,7 @@ publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
+            artifactId = "web-app-base64"
             pom {
                 packaging = "jar"
                 url = "https://github.com/simple-mocks/web-app-base64"
