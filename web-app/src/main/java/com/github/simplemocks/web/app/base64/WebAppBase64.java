@@ -1,6 +1,7 @@
 package com.github.simplemocks.web.app.base64;
 
 import com.github.simple_mocks.localization_service.api.dto.LocalizationId;
+import com.github.simple_mocks.localization_service.api.dto.LocalizationSourceId;
 import com.github.simplemocks.webapp.api.dto.HealthStatus;
 import com.github.simplemocks.webapp.api.dto.WebApplication;
 import jakarta.annotation.Nonnull;
@@ -14,6 +15,8 @@ import java.util.Set;
  */
 @Component
 public class WebAppBase64 implements WebApplication {
+    private static final LocalizationSourceId LOCALIZATION_SOURCE_ID = new LocalizationSourceId("WEB.APP.BASE64");
+
     @Nonnull
     @Override
     public String getCode() {
@@ -29,19 +32,19 @@ public class WebAppBase64 implements WebApplication {
     @Nonnull
     @Override
     public LocalizationId getIconCode() {
-        return new LocalizationId(Constants.LOCALIZATION_SOURCE_ID, "web.app.base64");
+        return new LocalizationId(LOCALIZATION_SOURCE_ID, "web.app.base64");
     }
 
     @Nonnull
     @Override
     public LocalizationId getTitleCode() {
-        return new LocalizationId(Constants.LOCALIZATION_SOURCE_ID, "web.app.base64.title");
+        return new LocalizationId(LOCALIZATION_SOURCE_ID, "web.app.base64.title");
     }
 
     @Nonnull
     @Override
     public LocalizationId getDescriptionCode() {
-        return new LocalizationId(Constants.LOCALIZATION_SOURCE_ID, "web.app.base64.description");
+        return new LocalizationId(LOCALIZATION_SOURCE_ID, "web.app.base64.description");
     }
 
     @Nonnull
