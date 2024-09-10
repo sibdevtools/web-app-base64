@@ -17,13 +17,6 @@ dependencies {
     implementation("org.springframework:spring-webmvc")
     implementation("org.springframework.boot:spring-boot-autoconfigure")
 
-    implementation("com.fasterxml.jackson.core:jackson-databind")
-
-    implementation("com.fasterxml.jackson.module:jackson-module-parameter-names")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
-    implementation("org.apache.commons:commons-lang3")
-
     implementation("jakarta.annotation:jakarta.annotation-api")
 
     implementation("com.github.simple-mocks:api-error:${project.property("lib_api_error_version")}")
@@ -32,8 +25,6 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.boot:spring-boot-starter-web")
-
-    testImplementation("com.h2database:h2")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testImplementation("org.junit.jupiter:junit-jupiter-params")
