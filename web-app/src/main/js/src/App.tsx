@@ -1,73 +1,39 @@
 import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'hugeicons-react'
+import DecodeBase64ToText from './componenets/DecodeBase64ToText';
+import EncodeFileToBase64 from './componenets/EncodeFileToBase64';
+import DecodeBase64ToFile from './componenets/DecodeBase64ToFile';
+import EncodeTextToBase64 from "./componenets/EncodeTextToBase64";
 
 const App: React.FC = () => {
-    const [encodedText, setEncodedText] = useState<string>('');
-    const [decodedText, setDecodedText] = useState<string>('');
+    const [mode, setMode] = useState('textToBase64');
+    const [encoding, setEncoding] = useState('UTF-8');
 
-    const encodeText = () => {
-        try {
-            const encoded = encodeURIComponent(decodedText)
-                .replace(/%([0-9A-F]{2})/g,
-                    function toSolidBytes(match, p1) {
-                        return String.fromCharCode(Number('0x' + p1));
-                    })
-            const b64 = btoa(encoded)
-            setEncodedText(b64);
-        } catch (e) {
-            alert('Invalid characters for encoding');
-        }
-    };
-
-    const decodeText = () => {
-        try {
-            const source = atob(encodedText)
-                .split('')
-                .map(function (c) {
-                    return '%' + ('00' + c.charCodeAt(0).toString(16))
-                        .slice(-2);
-                })
-                .join('');
-            setDecodedText(
-                decodeURIComponent(source)
-            );
-        } catch (e) {
-            alert('Invalid Base64 string');
+    const renderModeComponent = () => {
+        switch (mode) {
+            case 'textToBase64':
+                return <EncodeTextToBase64 encoding={encoding}/>;
+            case 'base64ToText':
+                return <DecodeBase64ToText encoding={encoding}/>;
+            case 'fileToBase64':
+                return <EncodeFileToBase64/>;
+            case 'base64ToFile':
+                return <DecodeBase64ToFile/>;
+            default:
+                return <div>Please select a mode</div>;
         }
     };
 
     return (
         <div className="container mt-5">
-            <div className="row">
-                <div className="col-6">
-          <textarea
-              className="form-control"
-              rows={10}
-              placeholder="Encoded Text"
-              value={encodedText}
-              onChange={(e) => setEncodedText(e.target.value)}
-          />
-                </div>
-                <div className="col-6">
-          <textarea
-              className="form-control"
-              rows={10}
-              placeholder="Decoded Text"
-              value={decodedText}
-              onChange={(e) => setDecodedText(e.target.value)}
-          />
-                </div>
-            </div>
-            <div className="row mt-3 text-center">
-                <div className="col">
-                    <button className="btn btn-primary mx-2" onClick={decodeText}>
-                        Decode
-                    </button>
-                    <button className="btn btn-secondary mx-2" onClick={encodeText}>
-                        Encode
-                    </button>
-                </div>
-            </div>
+            <select className="form-control form-select" value={mode} onChange={e => setMode(e.target.value)}>
+                <option value="textToBase64">Text to Base64 Text</option>
+                <option value="base64ToText">Base64 Text to Text</option>
+                <option value="fileToBase64">File to Base64 Text</option>
+                <option value="base64ToFile">Base64 Text to File</option>
+            </select>
+            {renderModeComponent()}
         </div>
     );
 };
