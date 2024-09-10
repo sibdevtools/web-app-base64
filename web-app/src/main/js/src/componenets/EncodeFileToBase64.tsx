@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {fileToBase64} from '../utils/converters';
 import {ArrowRight05Icon} from "hugeicons-react";
 
-const EncodeFileToBase64 = () => {
+export const EncodeFileToBase64 = () => {
     const [file, setFile] = useState<File | null>(null);
     const [base64, setBase64] = useState('');
 
@@ -51,5 +51,3 @@ const EncodeFileToBase64 = () => {
         </div>
     );
 };
-
-export default EncodeFileToBase64;

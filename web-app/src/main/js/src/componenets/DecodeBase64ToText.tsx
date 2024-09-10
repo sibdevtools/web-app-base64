@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {decodeBase64ToText} from '../utils/converters';
 import {ArrowRight05Icon} from 'hugeicons-react';
 
-const DecodeBase64ToText = ({encoding}: { encoding: string }) => {
+export const DecodeBase64ToText = ({encoding}: { encoding: string }) => {
     const [inputText, setInputText] = useState('');
     const [outputText, setOutputText] = useState('');
 
@@ -48,5 +48,3 @@ const DecodeBase64ToText = ({encoding}: { encoding: string }) => {
         </div>
     );
 };
-
-export default DecodeBase64ToText;

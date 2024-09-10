@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {base64ToFile} from '../utils/converters';
 import {Download04Icon} from "hugeicons-react";
 
-const DecodeBase64ToFile = () => {
+export const DecodeBase64ToFile = () => {
     const [inputText, setInputText] = useState('');
     const [filename, setFilename] = useState('download.txt');
 
@@ -44,4 +44,3 @@ const DecodeBase64ToFile = () => {
     );
 };
 
-export default DecodeBase64ToFile;

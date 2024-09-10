@@ -1,10 +1,7 @@
 import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'hugeicons-react'
-import DecodeBase64ToText from './componenets/DecodeBase64ToText';
-import EncodeFileToBase64 from './componenets/EncodeFileToBase64';
-import DecodeBase64ToFile from './componenets/DecodeBase64ToFile';
-import EncodeTextToBase64 from "./componenets/EncodeTextToBase64";
+import {DecodeBase64ToFile, DecodeBase64ToText, EncodeFileToBase64, EncodeTextToBase64} from "./componenets";
 
 const App: React.FC = () => {
     const [mode, setMode] = useState('textToBase64');
