@@ -37,7 +37,7 @@ public class WebAppBase64 implements WebApplication {
     @Nonnull
     @Override
     public String getFrontendUrl() {
-        return "/web/app/base64/";
+        return "/web/app/base64/ui/";
     }
 
     @Nonnull

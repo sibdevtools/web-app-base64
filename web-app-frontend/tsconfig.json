@@ -4,9 +4,11 @@
     "module": "esnext",
     "jsx": "react",
     "moduleResolution": "node",
-    "outDir": "../web/app/base64/static/",
+    "outDir": "build/out",
     "esModuleInterop": true,
     "strict": true
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src/**/*"
+  ]
 }

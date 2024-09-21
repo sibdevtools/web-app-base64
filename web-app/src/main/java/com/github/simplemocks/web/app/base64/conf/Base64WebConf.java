@@ -16,7 +16,7 @@ import org.springframework.web.servlet.resource.VersionResourceResolver;
 public class Base64WebConf implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/web/app/base64/**")
+        registry.addResourceHandler("/web/app/base64/ui/**")
                 .addResourceLocations("classpath:/web/app/base64/static/")
                 .resourceChain(true)
                 .addResolver(new VersionResourceResolver().addContentVersionStrategy("/**"));
@@ -24,7 +24,7 @@ public class Base64WebConf implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/web/app/base64/")
-                .setViewName("forward:/web/app/base64/index.html");
+        registry.addViewController("/web/app/base64/ui/")
+                .setViewName("forward:/web/app/base64/ui/index.html");
     }
 }

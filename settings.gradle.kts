@@ -1,3 +1,1 @@
-//rootProject.name = "web-app-base64"
-
-include(":web-app", ":standalone")
+include(":web-app", ":web-app-frontend", ":standalone")
