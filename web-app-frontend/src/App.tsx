@@ -24,6 +24,7 @@ const App: React.FC = () => {
 
   return (
     <div className="container mt-5">
+      <p className={'h2 mb-4'}>Base64 Encoder/Decoder</p>
       <label htmlFor="modeSelect">Mode Theme:</label>
       <select
         id="modeSelect"
