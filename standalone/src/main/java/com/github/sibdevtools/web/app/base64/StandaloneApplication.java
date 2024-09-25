@@ -1,4 +1,4 @@
-package com.github.simplemocks.web.app.base64;
+package com.github.sibdevtools.web.app.base64;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

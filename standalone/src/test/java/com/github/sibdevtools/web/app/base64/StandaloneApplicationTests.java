@@ -1,4 +1,4 @@
-package com.github.simplemocks.web.app.base64;
+package com.github.sibdevtools.web.app.base64;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

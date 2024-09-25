@@ -1,4 +1,4 @@
-package com.github.simplemocks.web.app.base64.conf;
+package com.github.sibdevtools.web.app.base64.conf;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
