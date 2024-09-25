@@ -1,4 +1,4 @@
-# Simple Mock - Web Application Base64
+# SibDevTools - Web Application Base64
 
 ## To build
 
