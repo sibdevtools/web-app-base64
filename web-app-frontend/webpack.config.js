@@ -42,7 +42,7 @@ module.exports = {
       },
     }),
     new ModuleFederationPlugin({
-      name: 'web-app-base64',
+      name: 'web_app_base64',
       filename: 'remoteEntry.js',
       exposes: {
         './App': './src/App',
