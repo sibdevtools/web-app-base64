@@ -31,7 +31,7 @@ public class WebAppBase64 implements WebApplication {
     @Nonnull
     @Override
     public String getCode() {
-        return "web.app.base64";
+        return "web_app_base64";
     }
 
     @Nonnull
