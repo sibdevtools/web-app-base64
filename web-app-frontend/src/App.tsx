@@ -1,42 +1,36 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'hugeicons-react'
-import { DecodeBase64ToFile, DecodeBase64ToText, EncodeFileToBase64, EncodeTextToBase64 } from './componenets';
+import { EncodeDecodeText, EncodeDecodeFile } from './componenets';
+import { Container, FormLabel, FormSelect } from 'react-bootstrap';
 
 const App: React.FC = () => {
-  const [mode, setMode] = useState('textToBase64');
+  const [mode, setMode] = useState('text');
   const [encoding, setEncoding] = useState('UTF-8');
 
   const renderModeComponent = () => {
     switch (mode) {
-      case 'textToBase64':
-        return <EncodeTextToBase64 encoding={encoding} />;
-      case 'base64ToText':
-        return <DecodeBase64ToText encoding={encoding} />;
-      case 'fileToBase64':
-        return <EncodeFileToBase64 />;
-      case 'base64ToFile':
-        return <DecodeBase64ToFile />;
+      case 'text':
+        return <EncodeDecodeText encoding={encoding} />;
+      case 'file':
+        return <EncodeDecodeFile />;
       default:
         return <div>Please select a mode</div>;
     }
   };
 
   return (
-    <div className="container mt-5">
+    <Container className="mt-5">
       <p className={'h2 mb-4'}>Base64 Encoder/Decoder</p>
-      <label htmlFor="modeSelect">Mode Theme:</label>
-      <select
+      <FormLabel htmlFor="modeSelect">Mode:</FormLabel>
+      <FormSelect
         id="modeSelect"
-        className="form-control form-select"
         value={mode} onChange={e => setMode(e.target.value)}>
-        <option value="textToBase64">Text to Base64 Text</option>
-        <option value="base64ToText">Base64 Text to Text</option>
-        <option value="fileToBase64">File to Base64 Text</option>
-        <option value="base64ToFile">Base64 Text to File</option>
-      </select>
+        <option value="text">Text Converter</option>
+        <option value="file">File Converter</option>
+      </FormSelect>
       {renderModeComponent()}
-    </div>
+    </Container>
   );
 };
 
