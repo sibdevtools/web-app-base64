@@ -1,4 +1,4 @@
 {
-  "web.app.jolt.title": "JOLT трансформатор",
-  "web.app.jolt.description": "Проверка JOLT преобразований, без кода"
+  "web.app.base64.title": "Base64 конвертер",
+  "web.app.base64.description": "Base64 текстовые и файловые декодер/энкодер"
 }
