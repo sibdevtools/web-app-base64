@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { base64ToFile, fileToBase64 } from '../utils/converters';
-import { Button, Col, Container, FormControl, FormGroup, FormLabel, InputGroup, Row } from 'react-bootstrap';
+import { Button, Col, Container, Form, InputGroup, Row } from 'react-bootstrap';
 import { Download04Icon } from 'hugeicons-react';
 
 export const EncodeDecodeFile = () => {
   const [base64, setBase64] = useState('');
   const [filename, setFilename] = useState('download.txt');
+  const [base64Disabled, setBase64Disabled] = useState(true);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
@@ -27,43 +28,66 @@ export const EncodeDecodeFile = () => {
   };
 
   return (
-    <Container className="mt-5">
+    <Container className="mt-3">
       <Row>
-        <Col md={4}>
-          <div className="mb-3">
-            <FormLabel htmlFor="fileNameInput">File</FormLabel>
-            <FormControl
-              id={'fileNameInput'}
+        <Row className="mb-3">
+          <Col md={2}>
+            <Form.Label htmlFor="fileInput">File</Form.Label>
+          </Col>
+          <Col md={5}>
+            <Form.Control
+              id={'fileInput'}
               type="file"
               onChange={handleFileChange} />
-          </div>
-          <div className="mb-3">
-            <FormLabel htmlFor="fileNameInput">Filename</FormLabel>
-            <InputGroup>
-              <FormControl
-                id={'fileNameInput'}
-                type="text"
-                value={filename}
-                placeholder="Filename"
-                onChange={(e) => setFilename(e.target.value)} />
-              <Button
-                variant="primary"
-                onClick={handleDownload}>
-                <Download04Icon />
-              </Button>
-            </InputGroup>
-          </div>
+          </Col>
+        </Row>
+      </Row>
+      <Row className="mb-3">
+        <Col md={2}>
+          <Form.Label htmlFor="fileNameInput">Filename</Form.Label>
         </Col>
-        <Col md={8}>
-          <FormLabel htmlFor="base64TextArea">Base64</FormLabel>
-          <textarea
-            id={'base64TextArea'}
-            className="form-control"
-            value={base64}
-            style={{ height: '320px' }}
-            onChange={it => setBase64(it.target.value)}
-            placeholder="Base64" />
+        <Col md={5}>
+          <InputGroup>
+            <Form.Control
+              id={'fileNameInput'}
+              type="text"
+              value={filename}
+              placeholder="Filename"
+              onChange={(e) => setFilename(e.target.value)} />
+            <Button
+              variant="primary"
+              title={'Download'}
+              onClick={handleDownload}
+            >
+              <Download04Icon />
+            </Button>
+          </InputGroup>
         </Col>
+      </Row>
+      <Row className="mb-3">
+        <Col md={2}>
+          <Form.Label htmlFor="base64Disabled">Hide Base64 Content</Form.Label>
+        </Col>
+        <Col md={1}>
+        <Form.Check
+          id={'base64Disabled'}
+          type="checkbox"
+          checked={base64Disabled}
+          onChange={(e) => setBase64Disabled(e.target.checked)}
+        />
+        </Col>
+      </Row>
+      <Row className="mb-3">
+        <Form.Label htmlFor="base64TextArea">Base64</Form.Label>
+        <Form.Control
+          as="textarea"
+          id={'base64TextArea'}
+          value={base64Disabled ? '' : base64}
+          style={{ height: '320px' }}
+          onChange={it => setBase64(it.target.value)}
+          placeholder={base64Disabled ? 'Hidden' : 'Base64 content'}
+          disabled={base64Disabled}
+        />
       </Row>
     </Container>
   );

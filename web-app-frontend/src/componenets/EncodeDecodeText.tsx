@@ -3,14 +3,13 @@ import { decodeBase64ToText, encodeTextToBase64 } from '../utils/converters';
 import { Col, Container, FormLabel, Row } from 'react-bootstrap';
 import Feedback from 'react-bootstrap/Feedback';
 
-export const EncodeDecodeText = ({ encoding }: { encoding: string }) => {
+export const EncodeDecodeText: React.FC = () => {
   const [base64Input, setBase64Input] = useState('');
   const [base64Error, setBase64Error] = useState<string | null>(null);
   const [textInput, setTextInput] = useState('');
   const [textError, setTextError] = useState<string | null>(null);
 
   const handleDecode = (base64: string) => {
-    console.log('handleDecode')
     if (base64 === base64Input) {
       return;
     }
@@ -18,7 +17,7 @@ export const EncodeDecodeText = ({ encoding }: { encoding: string }) => {
     setBase64Error(null)
     setBase64Input(base64)
     try {
-      const result = decodeBase64ToText(base64, encoding);
+      const result = decodeBase64ToText(base64);
       setTextInput(result);
     } catch (e) {
       setBase64Error('Invalid Base64 data: ' + e);
@@ -26,7 +25,6 @@ export const EncodeDecodeText = ({ encoding }: { encoding: string }) => {
   };
 
   const handleEncode = (text: string) => {
-    console.log('handleEncode')
     if (text === textInput) {
       return;
     }
@@ -34,7 +32,7 @@ export const EncodeDecodeText = ({ encoding }: { encoding: string }) => {
     setBase64Error(null)
     setTextInput(text)
     try {
-      const result = encodeTextToBase64(text, encoding);
+      const result = encodeTextToBase64(text);
       setBase64Input(result);
     } catch (e) {
       setBase64Input('Invalid text data');
@@ -42,7 +40,7 @@ export const EncodeDecodeText = ({ encoding }: { encoding: string }) => {
   };
 
   return (
-    <Container className="mt-5">
+    <Container className="mt-3">
       <Row>
         <Col md={12} lg={6}>
           <FormLabel htmlFor="plainTextArea">Plain text</FormLabel>
